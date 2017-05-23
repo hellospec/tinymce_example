@@ -7,8 +7,10 @@
   <br>
   <%= f.label :body%>
   <br>
-  <%= f.text_area :body, id: :post_body %>
+  <%= f.text_area :body, id: :post_body, class: "tinymce", rows:20, cols: 90 %>
   <br>
 
   <%= f.submit %>
 <% end %>
+
+<%= javascript_include_tag "tinymce_init" %>
