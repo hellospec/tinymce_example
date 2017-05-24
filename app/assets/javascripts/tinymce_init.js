@@ -1,4 +1,23 @@
 document.addEventListener('turbolinks:load', function(){
+  upload_image = function(blobInfo, success, failure){
+    var xhr, formData;
+
+    xhr = new XMLHttpRequest();
+    xhr.open('POST', '/images');
+
+    xhr.setRequestHeader("X-CSRF-Token", document.querySelector("meta[name='csrf-token']").content);
+
+    xhr.onload = function() {
+      var response = JSON.parse(xhr.responseText);
+      success(response.location);
+    };
+
+    formData = new FormData();
+    formData.append('image[image]', blobInfo.blob());
+
+    xhr.send(formData);
+  }
+
   tinyMCE.init({
     selector: "textarea.tinymce",
     plugins: ["image link paste"],
@@ -6,37 +25,9 @@ document.addEventListener('turbolinks:load', function(){
     
     paste_data_images: true,
     convert_urls: false,
-    //images_upload_url: "/photos"
 
-    images_upload_handler: function(blobInfo, success, failure){
-      console.log("uploading image");
-
-      var xhr, formData;
-
-      formData = new FormData();
-      formData.append('image[image]', blobInfo.blob());
-
-      xhr = new XMLHttpRequest();
-
-      xhr.open('POST', '/images');
-
-      xhr.setRequestHeader("X-CSRF-Token", document.querySelector("meta[name='csrf-token']").content);
-
-      xhr.onload = function() {
-        var response = JSON.parse(xhr.responseText);
-        
-        console.log("url: " + response.location);
-        success(response.location);
-      };
-      
-      xhr.onloadend = function() {
-        var response = JSON.parse(xhr.responseText);
-        setDataImageId(response);
-        addInputHiddenForImageId(response);
-      };
-
-      xhr.send(formData);
-    }
+    images_upload_handler: upload_image
   });
+
 });
 

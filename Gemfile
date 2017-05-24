@@ -34,7 +34,6 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 gem 'tinymce-rails'
-gem 'mini_magick'
 gem 'carrierwave', '~> 1.0'
 
 group :development, :test do
