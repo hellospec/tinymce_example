@@ -1,24 +1,5 @@
-# README
+# ตัวอย่างการใช้ TinyMCE กับ Rails
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+แอพตัวอย่างอ้างอิงจากบทความ [ลองใช้ TinyMCE กับ Rails](https://goo.gl/BnA7ZO)
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+แอพนี้เป็นแอพสำหรับการโพสบทความอย่างง่ายขึ้นมา  โดยจะนำ TinyMCE มาใช้เป็น HTML Editor แทนในส่วนของ textarea แบบธรรมดาที่อยู่ภายใน form  ซึ่งผู้ใช้สามารถเขียนบทความ ใส่รูป และปรับแต่งหน้าตาให้เป็นไปตามที่ต้องการได้
